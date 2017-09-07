@@ -1,0 +1,164 @@
+{
+  "user_profile": {
+    "id": 0,
+    "name": "Alin"
+  },
+  "saved_state": {
+    "opened_projects": [
+      {
+        "id": 1,
+        "name": "Lumen Index",
+        "stage": "questions",
+        "selected": true
+      },
+      {
+        "id": 2,
+        "name": "Testing",
+        "stage": "questions",
+        "selected": false
+      },
+      {
+        "id": 3,
+        "name": "Exploratory",
+        "stage": "questions",
+        "selected": false
+      }
+    ]
+  },
+  "projects": [
+    {
+      "id": 1,
+      "name": "Lumen Index",
+      "stages": [
+        {
+          "id": 1,
+          "name": "questions",
+          "title": "A Basic Territorial Coherence Index in Support for Inter-Communal Co-operation. A Working Hypothesis",
+          "abstract": "The aim of this paper is to construct a simple territorial coherence index based on minimal population and geographical data. Essentially, the index works with demographic masses and distances between rural settlements and the nearest urban centre. The reasons for such an exercise are not very hard to find: first, ‘gravitational’ indices lend themselves well enough to grasping the structure of the urban hinterland, thereby making them valuable for the study of peri-urban areas. And second, because they can inform planners about possible market or commuting areas, which, in turn, can help calibrate public service provision.",
+          "keywords": [
+            "territorial cohesion index",
+            "inter-communality",
+            "public service provision",
+            "peri-urban areas"
+          ],
+          "questions": [
+            "Is there a good general service access?",
+            "What are the most poorly serviced areas?"
+          ]
+        },
+        {
+          "id": 2,
+          "name": "dataset"
+        },
+        {
+          "id": 3,
+          "name": "aquisition"
+        },
+        {
+          "id": 4,
+          "name": "processing"
+        },
+        {
+          "id": 5,
+          "name": "visualizing"
+        },
+        {
+          "id": 6,
+          "name": "writing"
+        },
+        {
+          "id": 7,
+          "name": "sharing"
+        },
+        {
+          "id": 8,
+          "name": "messaging"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Testing",
+      "stages": [
+        {
+          "id": 1,
+          "name": "questions",
+          "title": "",
+          "abstract": "",
+          "keywords": [],
+          "questions": []
+        },
+        {
+          "id": 2,
+          "name": "dataset"
+        },
+        {
+          "id": 3,
+          "name": "aquisition"
+        },
+        {
+          "id": 4,
+          "name": "processing"
+        },
+        {
+          "id": 5,
+          "name": "visualizing"
+        },
+        {
+          "id": 6,
+          "name": "writing"
+        },
+        {
+          "id": 7,
+          "name": "sharing"
+        },
+        {
+          "id": 8,
+          "name": "messaging"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Exploratory",
+      "stages": [
+        {
+          "id": 1,
+          "name": "questions",
+          "title": "",
+          "abstract": "",
+          "keywords": [],
+          "questions": []
+        },
+        {
+          "id": 2,
+          "name": "dataset"
+        },
+        {
+          "id": 3,
+          "name": "aquisition"
+        },
+        {
+          "id": 4,
+          "name": "processing"
+        },
+        {
+          "id": 5,
+          "name": "visualizing"
+        },
+        {
+          "id": 6,
+          "name": "writing"
+        },
+        {
+          "id": 7,
+          "name": "sharing"
+        },
+        {
+          "id": 8,
+          "name": "messaging"
+        }
+      ]
+    }
+  ]
+}
