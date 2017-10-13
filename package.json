@@ -11,6 +11,8 @@
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.3",
     "express": "~4.15.2",
+    "geojson": "^0.5.0",
+    "load-json-file": "^3.0.0",
     "morgan": "~1.8.1",
     "pg-promise": "^6.5.1",
     "pug": "^2.0.0-rc.3",

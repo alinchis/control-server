@@ -17,6 +17,11 @@ var db = pgp(connectionString);
 //// load data from local file
 var dataset = require('./data.json');
 
+///////////////////////////////////////////////////////
+// load data from local geojson file
+// var GeoJSON = require('geojson');
+var datagis = (require('./datagis.json'));
+
 // add query functions
 
 // send all dataset to browser
@@ -26,6 +31,16 @@ function getAllDataset(req, res, next) {
     .json({
       status: 'success',
       data: dataset,
+      message: 'Retrieved ALL data'
+    })
+}
+// send datagis to browser
+function getDataGIS(req, res, next) {
+  // console.log('testing: ', dataset);
+  res.status(200)
+    .json({
+      status: 'success',
+      data: datagis,
       message: 'Retrieved ALL data'
     })
 }
@@ -113,6 +128,7 @@ function removeProject(req, res, next) {
 
 
 module.exports = {
+  getDataGIS: getDataGIS,
   getAllDataset: getAllDataset,
   getAllProjects: getAllProjects,
   getSingleProject: getSingleProject,
