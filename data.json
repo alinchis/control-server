@@ -60,7 +60,12 @@
         },
         {
           "id": 5,
-          "name": "visualization"
+          "name": "visualization",
+          "dataset": [
+            {"index": 0, "visible": false},
+            {"index": 1, "visible": false},
+            {"index": 3, "visible": false},
+            {"index": 2, "visible": false}          ]
         },
         {
           "id": 6,
@@ -108,7 +113,13 @@
         },
         {
           "id": 5,
-          "name": "visualization"
+          "name": "visualization",
+          "dataset": [
+            {"index": 0, "visible": false},
+            {"index": 1, "visible": false},
+            {"index": 3, "visible": false},
+            {"index": 2, "visible": false}
+          ]
         },
         {
           "id": 6,
@@ -151,7 +162,13 @@
         },
         {
           "id": 5,
-          "name": "visualization"
+          "name": "visualization",
+          "dataset": [
+            {"index": 0, "visible": false},
+            {"index": 1, "visible": false},
+            {"index": 3, "visible": false},
+            {"index": 2, "visible": false}
+          ]
         },
         {
           "id": 6,

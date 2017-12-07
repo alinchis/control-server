@@ -1,28 +1,77 @@
-var promise = require('bluebird');
-
-var options = {
-  // Initialization Options
-  promiseLib: promise
-};
+const Sequelize = require('sequelize');
+const fs = require('fs');
 
 // load db connection settings
 var dbs = require('./db.js');
 
 // set database connection settings
-var pgp = require('pg-promise')(options);
 var connectionString = `postgres://${dbs.user}:${dbs.password}@${dbs.host}:${dbs.port}/${dbs.db}`;
-var db = pgp(connectionString);
+const sequelize  = new Sequelize(connectionString);
 
 ///////////////////////////////////////////////////////
-//// load data from local file
-var dataset = require('./data.json');
+//// load data from local files
+const dataset = require('./data.json');
+const initsql = fs.readFileSync('./dbinit.sql');
+// const ro_frontiera = fs.readFileSync('./geojson/ro_frontiera_poligon.geojson', 'utf8', function (err,data) {
+//   if (err) {
+//     return console.log(err);
+//   }
+//   console.log(data);
+// });
+
+// get all map files from directory
+var ro_maps = [];
+const geofolder = './geojson';
+const geofiles = fs.readdir(geofolder, (err, files) => {
+  files.forEach(file => {
+    console.log(file)
+    ro_maps.push({
+      name: file.slice(0, -8),
+      data: fs.readFileSync('./geojson/'+file, 'utf8', function (err,data) {
+        if (err) {
+          return console.log(err);
+        }
+        console.log(data);
+      })
+    });
+  })
+});
 
 ///////////////////////////////////////////////////////
-// load data from local geojson file
-// var GeoJSON = require('geojson');
-var datagis = (require('./datagis.json'));
-
 // add query functions
+///////////////////////////////////////////////////////
+
+// test the connection
+function testConnection(req, res, next) {
+  sequelize
+  .authenticate()
+  .then(() => {
+    res.status(200)
+      .json({
+        status: 'success',
+        data: '',
+        message: 'connection successfull'
+      });
+    console.log('Connection has been established successfully.')
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err)
+  })
+}
+
+// initialize the database
+function initDB(req, res, next) {
+  sequelize.query(initsql).spread((results, metadata) => {
+    // Results will be an empty array and metadata will contain the number of affected rows.
+    res.status(200)
+      .json({
+        status: 'success',
+        data: medatada,
+        message: 'db initialized successfully'
+      })
+  })
+}
+
 
 // send all dataset to browser
 function getAllDataset(req, res, next) {
@@ -34,31 +83,18 @@ function getAllDataset(req, res, next) {
       message: 'Retrieved ALL data'
     })
 }
-// send datagis to browser
-function getDataGIS(req, res, next) {
-  // console.log('testing: ', dataset);
-  res.status(200)
-    .json({
-      status: 'success',
-      data: datagis,
-      message: 'Retrieved ALL data'
-    })
-}
 
 // load all projects from database
 function getAllProjects(req, res, next) {
-  db.any('select * from projects order by id')
-    .then(function (data) {
-      res.status(200)
-        .json({
-          status: 'success',
-          data: data,
-          message: 'Retrieved ALL projects'
-        });
-    })
-    .catch(function (err) {
-      return next(err);
-    });
+  sequelize.query('select * from projects order by id').spread((results, metadata) => {
+    // Results will be an empty array and metadata will contain the number of affected rows.
+    res.status(200)
+      .json({
+        status: metadata,
+        data: results,
+        message: 'Retrieved ALL projects'
+      })
+  })
 }
 
 function getSingleProject(req, res, next) {
@@ -126,13 +162,25 @@ function removeProject(req, res, next) {
     });
 }
 
+// load geojson data from file
+function getGeotest(req, res, next) {
+  // console.log('testing: ', dataset);
+  res.status(200)
+    .json({
+      status: 'success',
+      data: ro_maps,
+      message: 'Retrieved ALL data'
+    })
+}
 
 module.exports = {
-  getDataGIS: getDataGIS,
+  testConnection: testConnection,
+  initDB: initDB,
   getAllDataset: getAllDataset,
   getAllProjects: getAllProjects,
   getSingleProject: getSingleProject,
   createProject: createProject,
   updateProject: updateProject,
-  removeProject: removeProject
+  removeProject: removeProject,
+  getGeotest: getGeotest
 };
